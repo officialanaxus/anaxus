@@ -31,6 +31,9 @@ nav h2 {
   margin: 0;
   font-size: 1.5rem;
   font-weight: 700; /* Bold for the Anaxus logo */
+  border: 2px solid white; /* 2px white border around the logo */
+  padding: 5px; /* Padding inside the border */
+  display: inline-block; /* Ensures the box wraps only around the text */
 }
 
 nav div {
@@ -41,10 +44,13 @@ nav div {
 nav a {
   color: white;
   text-decoration: none;
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 700; /* Bold for nav buttons */
+  transition: transform 0.2s ease; /* Smooth transition for scaling */
 }
 
 nav a:hover {
-  text-decoration: underline;
+  transform: scale(1.1); /* Enlarge the button slightly on hover */
+  color: #3A8DFF;
+  text-decoration: none; /* Ensures no underline appears on hover */
 }

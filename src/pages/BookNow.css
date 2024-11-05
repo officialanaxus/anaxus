@@ -1,0 +1,56 @@
+/* BookNow.css */
+
+.book-now-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #0d1117;
+    color: #eaeaea;
+    border-radius: 8px;
+  }
+  
+  h1 {
+    text-align: center;
+    color: #3A8DFF;
+  }
+  
+  .book-now-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  label {
+    font-weight: 500;
+    color: #eaeaea;
+  }
+  
+  input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #3A8DFF;
+    background-color: #1a1f24;
+    color: #eaeaea;
+  }
+  
+  textarea {
+    resize: vertical;
+    min-height: 80px;
+  }
+  
+  button[type="submit"] {
+    padding: 10px;
+    border: none;
+    background-color: #3A8DFF;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.2s ease;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #3378cc;
+  }

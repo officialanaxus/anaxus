@@ -1,18 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import './App.css';
-
-function Home() {
-  return <h1>Home</h1>;
-}
-
-function Schedule() {
-  return <h1>Schedule</h1>;
-}
-
-function Contact() {
-  return <h1>Contact</h1>;
-}
+import Home from './pages/Home';
+import BookNow from './pages/BookNow';
+import Support from './pages/Support';  // Updated to Support
 
 function Navbar() {
   return (
@@ -20,15 +11,11 @@ function Navbar() {
       <h2>Anaxus</h2>
       <div>
         <Link to="/">Home</Link>
-        <Link to="/schedule">Schedule</Link>
-        <Link to="/contact">Contact</Link>
+        <Link to="/book-now">Book Now</Link>
+        <Link to="/support">Support</Link> {/* Updated to "Support" */}
       </div>
     </nav>
   );
-}
-
-function NotFound() {
-  return <h1>404 - Page Not Found</h1>;
 }
 
 function App() {
@@ -38,9 +25,8 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/schedule" element={<Schedule />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="*" element={<NotFound />} />
+          <Route path="/book-now" element={<BookNow />} />
+          <Route path="/support" element={<Support />} />  {/* Updated route to "/support" */}
         </Routes>
       </div>
     </Router>
