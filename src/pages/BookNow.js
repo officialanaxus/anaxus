@@ -20,10 +20,10 @@ function BookNow() {
     e.preventDefault();
     emailjs
       .send(
-        'YOUR_SERVICE_ID',     // Replace with your EmailJS Service ID
-        'YOUR_TEMPLATE_ID',    // Replace with your EmailJS Template ID
+        'service_cpkajrx',     // Replace with your EmailJS Service ID
+        'template_5hx8yn9',    // Replace with your EmailJS Template ID
         formData,
-        'YOUR_USER_ID'         // Replace with your EmailJS User ID
+        'T6hrrAGFFeASGhffB'         // Replace with your EmailJS User ID
       )
       .then((response) => {
         alert('Appointment request sent successfully!');
