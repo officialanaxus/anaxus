@@ -53,7 +53,13 @@ function BookNow() {
         </label>
         <label>
           Preferred Date:
-          <input type="date" name="date" value={formData.date} onChange={handleChange} required />
+          <input
+            type="date"
+            name="date"
+            value={formData.date || new Date().toISOString().split("T")[0]} // Defaults to today if formData.date is empty
+            onChange={handleChange}
+            required
+          />
         </label>
         <label>
           Service Type:
@@ -61,13 +67,20 @@ function BookNow() {
             <option value="">Select a service</option>
             <option value="Networking Setup">Networking Setup</option>
             <option value="Computer Troubleshooting">Computer Troubleshooting</option>
-            <option value="TV Mounting">TV Mounting</option>
+            <option value="Home Theater">Home Theater/Cable Management</option>
             <option value="Business Technical Support">Business Technical Support</option>
+            <option value="Other">Other (please provide details)</option>
           </select>
         </label>
         <label>
-          Additional Details:
-          <textarea name="details" value={formData.details} onChange={handleChange} placeholder="Provide any specific information..." />
+          Additional details/Brief description:
+          <textarea
+            name="details"
+            value={formData.details}
+            onChange={handleChange}
+            placeholder="Provide any specific information/brief description..."
+            required
+          />
         </label>
         <button type="submit">Submit Appointment Request</button>
       </form>

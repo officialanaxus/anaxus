@@ -23,8 +23,8 @@ function Home() {
         </div>
 
         <div className="service-card">
-          <h3>TV Mounting & Cable Management</h3>
-          <p>We offer professional TV mounting services with clean, concealed cable setups for a sleek look in any room.</p>
+          <h3>Home Theater Installation & Cable Management</h3>
+          <p>We specialize in complete home theater installations, including professional TV mounting and organized, concealed cable management to enhance your viewing experience with a clean, seamless setup.</p>
         </div>
 
         <div className="service-card">
