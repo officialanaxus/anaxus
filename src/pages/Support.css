@@ -1,55 +1,63 @@
 /* Support.css */
 
 .support-container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #0d1117;
-    color: #eaeaea;
-    border-radius: 8px;
-  }
-  
-  h1 {
-    text-align: center;
-    color: #3A8DFF;
-  }
-  
-  .contact-info {
-    margin-top: 20px;
-  }
-  
-  .contact-info h2 {
-    color: #3A8DFF;
-  }
-  
-  .contact-info p,
-  .support-tips p {
-    font-size: 1rem;
-    margin-top: 10px;
-    line-height: 1.6;
-  }
-  
-  ul {
-    margin-top: 10px;
-    padding-left: 20px;
-  }
-  
-  ul li {
-    margin-bottom: 8px;
-  }
-  
-  a {
-    color: #3A8DFF;
-    text-decoration: none;
-  }
-  
-  a:hover {
-    text-decoration: underline;
-  }
-  
-  .support-tips {
-    margin-top: 30px;
-    background-color: #1a1f24;
-    padding: 15px;
-    border-radius: 8px;
-  }
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  color: #eaeaea;
+  border-radius: 8px;
+}
+
+h1 {
+  text-align: center;
+  color: #3A8DFF;
+}
+
+.contact-info {
+  margin-top: 20px;
+}
+
+.contact-info h2 {
+  color: #3A8DFF;
+}
+
+.contact-info p,
+.support-tips p {
+  font-size: 1rem;
+  margin-top: 10px;
+  line-height: 1.6;
+}
+
+ul {
+  margin-top: 10px;
+  padding-left: 20px;
+}
+
+ul li {
+  margin-bottom: 8px;
+}
+
+a {
+  color: #3A8DFF;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Updated style for .support-tips to match .service-card */
+.support-tips {
+  background-color: rgba(0, 0, 0, 0.7); /* Slightly transparent black */
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid rgba(58, 141, 255, 0.5); /* Softer blue border with transparency */
+  backdrop-filter: blur(6px); /* Adds a blur effect */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
+  transition: transform 0.3s ease, backdrop-filter 0.3s ease; /* Smooth transition */
+}
+
+.support-tips:hover {
+  transform: scale(1); /* Slight zoom on hover */
+  backdrop-filter: blur(10px); /* Increase blur on hover */
+}

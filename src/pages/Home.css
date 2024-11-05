@@ -1,76 +1,89 @@
 /* Home.css */
 
 .home-container {
-    padding: 20px;
-    color: #eaeaea;
-  }
-  
-  .hero-section {
-    text-align: center;
-    padding: 40px 0;
-    background-color: #0b0e13; /* Darker background for contrast */
-  }
-  
-  .hero-section h1 {
-    font-size: 2.5rem;
-    color: #3A8DFF; /* Nice blue color for the main title */
-  }
-  
-  .hero-section p {
-    font-size: 1.2rem;
-    margin-top: 10px;
-  }
-  
-  .services-section {
-    padding: 40px 20px;
-    background-color: #0d1117;
-  }
-  
-  .services-section h2 {
-    font-size: 2rem;
-    text-align: center;
-    color: #3A8DFF;
-    margin-bottom: 30px;
-  }
-  
-  .service-card {
-    background-color: #1a1f24;
-    border: 1px solid #3A8DFF;
-    border-radius: 8px;
-    padding: 20px;
-    margin: 20px 0;
-  }
-  
-  .service-card h3 {
-    font-size: 1.5rem;
-    color: #ffffff;
-  }
-  
-  .service-card p {
-    font-size: 1rem;
-    color: #cccccc;
-    margin-top: 10px;
-  }
-  
-  .contact-section {
-    padding: 40px 20px;
-    text-align: center;
-  }
-  
-  .contact-section h2 {
-    font-size: 2rem;
-    color: #3A8DFF;
-  }
-  
-  .contact-section p {
-    font-size: 1.2rem;
-  }
-  
-  .contact-section a {
-    color: #3A8DFF;
-    text-decoration: none;
-  }
-  
-  .contact-section a:hover {
-    text-decoration: underline;
-  }
+  padding: 20px;
+  color: #eaeaea;
+  background: transparent; /* Ensure background is transparent */
+}
+
+.hero-section {
+  text-align: center;
+  padding: 40px 0;
+  background: transparent; /* Ensure no background color */
+}
+
+.hero-section h1 {
+  font-size: 2.5rem;
+  color: #3A8DFF; /* Nice blue color for the main title */
+}
+
+.hero-section p {
+  font-size: 1.2rem;
+  margin-top: 10px;
+}
+
+.services-section {
+  padding: 40px 20px;
+  background: transparent; /* Ensure no background color */
+}
+
+.services-section h2 {
+  font-size: 2rem;
+  text-align: center;
+  color: #3A8DFF;
+  margin-bottom: 30px;
+}
+
+/* Updated style for .service-card */
+.service-card {
+  background-color: rgba(0, 0, 0, 0.7); /* Slightly transparent black */
+  border: 1px solid rgba(58, 141, 255, 0.5); /* Softer blue border with transparency */
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px auto; /* Center the card */
+  max-width: 1200px; /* Slightly wider than the navbar */
+  width: 98%; /* Allows responsive shrinking on smaller screens */
+  backdrop-filter: blur(6px); /* Adds a blur effect */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
+  transition: transform 0.3s ease, backdrop-filter 0.3s ease; /* Smooth transition */
+}
+
+.service-card:hover {
+  transform: scale(1); /* Slight zoom on hover */
+  backdrop-filter: blur(10px); /* Increase blur on hover */
+}
+
+.service-card h3 {
+  font-size: 1.5rem;
+  color: #ffffff;
+}
+
+.service-card p {
+  font-size: 1rem;
+  color: #cccccc;
+  margin-top: 10px;
+}
+
+.contact-section {
+  padding: 40px 20px;
+  text-align: center;
+  background: transparent; /* Ensure no background color */
+}
+
+.contact-section h2 {
+  font-size: 2rem;
+  color: #3A8DFF;
+}
+
+.contact-section p {
+  font-size: 1.2rem;
+}
+
+.contact-section a {
+  color: #3A8DFF;
+  text-decoration: none;
+}
+
+.contact-section a:hover {
+  text-decoration: underline;
+}
