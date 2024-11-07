@@ -5,66 +5,67 @@
 
 body, .App {
   text-align: center;
-  padding-top: 80px; /* Prevent content overlap with navbar */
-  min-height: 100vh; /* Make the background color cover the entire viewport */
-  font-family: 'Inter', sans-serif; /* Apply Inter font to the whole site */
-  color: white; /* Ensure text is visible on dark background */
-
-  /* Background gradient setup */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+  color: white;
   background: rgb(9,9,121);
   background: radial-gradient(circle, rgba(9,9,121,1) 0%, rgba(0,0,0,1) 81%);
-  background-size: 100% 200vh; /* Extend gradient vertically to make it appear high up */
-  background-position: bottom center; /* Position gradient at the top */
-  background-attachment: fixed; /* Keeps the gradient fixed so it doesn't scroll */
+  background-size: cover;
+  background-position: bottom center;
+  background-attachment: fixed;
 }
 
 nav {
   position: fixed;
-  top: 20px; /* Adds some space from the top */
+  top: 20px;
   left: 50%;
-  transform: translateX(-50%); /* Centers the navbar horizontally */
+  transform: translateX(-50%);
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 10px 20px;
-  background-color: rgba(11, 14, 19, 0.8); /* Dark background with transparency */
+  background-color: rgba(11, 14, 19, 0.8);
   color: white;
-  border-radius: 16px; /* Rounded corners */
-  max-width: 1100px; /* Center the navbar with a max width */
-  width: 95%; /* Allows more responsive stretching on smaller screens */
+  border-radius: 16px;
+  max-width: 1100px;
+  width: 95%;
   z-index: 1000;
   box-sizing: border-box;
-  border: 1px solid #888; /* 1px gray border around the navbar */
-  backdrop-filter: blur(8px); /* Blur effect for background transparency */
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
-  font-weight: 500; /* Default weight for navbar text */
+  border: 1px solid #888;
+  backdrop-filter: blur(8px);
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+  font-weight: 500;
 }
 
-nav h2 {
+.nav-left, .nav-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-center h2 {
   margin: 0;
   font-size: 1.5rem;
-  font-weight: 700; /* Bold for the Anaxus logo */
-  border: 2px solid white; /* 2px white border around the logo */
-  padding: 5px; /* Padding inside the border */
-  display: inline-block; /* Ensures the box wraps only around the text */
-  border-radius: 8px; /* Rounded corners for the logo */
-}
-
-nav div {
-  display: flex;
-  gap: 20px;
+  font-weight: 700;
+  border: 2px solid white;
+  padding: 5px;
+  display: inline-block;
+  border-radius: 8px;
 }
 
 nav a {
   color: white;
   text-decoration: none;
   font-size: 1.1rem;
-  font-weight: 700; /* Bold for nav buttons */
-  transition: transform 0.2s ease, color 0.2s ease; /* Smooth transition for scaling and color change */
+  font-weight: 700;
+  transition: transform 0.2s ease, color 0.2s ease;
 }
 
 nav a:hover {
-  transform: scale(1.1); /* Enlarge the button slightly on hover */
-  color: #3A8DFF; /* Hover color for links */
-  text-decoration: none; /* Ensures no underline appears on hover */
+  transform: scale(1.1);
+  color: #3A8DFF;
+  text-decoration: none;
 }
