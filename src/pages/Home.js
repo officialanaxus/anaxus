@@ -1,17 +1,48 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Home.css';
 
 function Home() {
+  const [isServicesVisible, setIsServicesVisible] = useState(false);
+  const [scrollOpacity, setScrollOpacity] = useState(1);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const fadeOutThreshold = 120; // Fade out completely within 200px of scrolling
+
+      // Trigger visibility of "Our Services" after minimal scroll
+      if (window.scrollY > 0) {
+        setIsServicesVisible(true);
+      }
+
+      // Adjust opacity based on scroll position, disappear quickly
+      if (window.scrollY < fadeOutThreshold) {
+        setScrollOpacity(1 - window.scrollY / fadeOutThreshold);
+      } else {
+        setScrollOpacity(0); // Fully hide after threshold
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <div className="home-container">
       <header className="hero-section">
         <h1>Welcome to Anaxus</h1>
         <p>Your Trusted Partner in Tech Support and Consulting Services</p>
+        <div
+          className="scroll-indicator"
+          style={{ opacity: scrollOpacity }}
+        >
+          <p>Scroll</p>
+          <span className="arrow-down">↓</span>
+        </div>
       </header>
 
-      <section className="services-section">
+      <section className={`services-section ${isServicesVisible ? 'visible' : ''}`}>
         <h2>Our Services</h2>
-        
+
         <div className="service-card">
           <h3>Networking Setup & Support</h3>
           <p>From configuring routers to setting up in-wall cabling, we ensure your network operates seamlessly and securely.</p>

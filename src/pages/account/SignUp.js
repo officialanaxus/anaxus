@@ -13,7 +13,12 @@ export default function SignUp() {
   };
 
   const handleGoogleLogin = async () => {
-    await supabase.auth.signInWithOAuth({ provider: 'google' });
+    await supabase.auth.signInWithOAuth({
+      provider: 'google',
+      options: {
+        redirectTo: `${window.location.origin}/book-now`, // Redirect to "Book Now" after Google signup
+      },
+    });
   };
 
   return (

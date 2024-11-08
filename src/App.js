@@ -12,12 +12,14 @@ import PrivateRoute from './components/PrivateRoute';
 
 function App() {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true); // New loading state
   const location = useLocation();
 
   useEffect(() => {
     const checkSession = async () => {
       const { data: { session } } = await supabase.auth.getSession();
       setUser(session?.user || null);
+      setLoading(false); // Set loading to false after session check
     };
 
     checkSession();
@@ -47,13 +49,18 @@ function App() {
     }
   }, [location.pathname]);
 
+  // Show loading indicator while checking session
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div className="App">
       {showNavbar && <Navbar user={user} onSignOut={handleSignOut} />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/support" element={<Support />} />
-        
+
         {/* Protect Book Now route with PrivateRoute */}
         <Route 
           path="/book-now" 

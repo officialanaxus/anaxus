@@ -1,88 +1,34 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Box, styled } from '@mui/material';
-
-const NavbarContainer = styled('nav')({
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'space-between',
-  padding: '10px 20px',
-  backgroundColor: 'rgba(0, 0, 0, 0.7)', // Darker, semi-transparent background
-  color: 'white',
-  borderRadius: '16px',
-  maxWidth: '1200px', // Increased width
-  width: '95%',
-  margin: '0 auto',
-  boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.3)',
-  backdropFilter: 'blur(10px)', // Blur effect for transparency
-});
-
-const LeftLinks = styled(Box)({
-  display: 'flex',
-  alignItems: 'center',
-  gap: '20px',
-});
-
-const Divider = styled('div')({
-  height: '24px',
-  width: '1px',
-  backgroundColor: 'rgba(255, 255, 255, 0.5)', // Semi-transparent white divider
-});
-
-const RightLinks = styled(Box)({
-  display: 'flex',
-  alignItems: 'center',
-  gap: '20px',
-});
-
-const StyledLink = styled(Link)({
-  color: 'white',
-  textDecoration: 'none',
-  fontSize: '1.1rem',
-  fontWeight: 700,
-  '&:hover': {
-    color: '#3A8DFF',
-  },
-});
-
-const StyledButton = styled('button')({
-  background: 'none',
-  border: 'none',
-  color: 'white',
-  fontSize: '1.1rem',
-  fontWeight: 700,
-  cursor: 'pointer',
-  textDecoration: 'none',
-  '&:hover': {
-    color: '#3A8DFF',
-  },
-});
 
 export default function Navbar({ user, onSignOut }) {
   return (
-    <NavbarContainer>
-      {/* Left side with logo, divider, and main navigation links */}
-      <LeftLinks>
-        <h2 style={{ margin: '0' }}>Anaxus</h2>
-        <Divider />
-        <StyledLink to="/">Home</StyledLink>
-        <StyledLink to="/book-now">Book Now</StyledLink>
-        <StyledLink to="/support">Support</StyledLink>
-      </LeftLinks>
+    <nav>
+      <div className="nav-left">
+        {/* Add a wrapper for the logo and text */}
+        <div className="nav-logo">
+          <img
+            src="https://raw.githubusercontent.com/officialanaxus/anaxus/refs/heads/main/Images/Anaxus-logo-transparent.svg"
+            alt="Anaxus Logo"
+          />
+          <h2>ANAXUS</h2>
+        </div>
+        <div className="nav-divider"></div>
+        <Link to="/">Home</Link>
+        <Link to="/book-now">Book Now</Link>
+        <Link to="/support">Support</Link>
+      </div>
 
-      {/* Right side with Login and Sign Up (or Sign Out) */}
-      <RightLinks>
+      <div className="nav-right">
         {user ? (
-          <StyledButton onClick={onSignOut}>
-            Sign Out
-          </StyledButton>
+          <button onClick={onSignOut}>Sign Out</button>
         ) : (
           <>
-            <StyledLink to="/account/login">Login</StyledLink>
-            <StyledLink to="/account/signup">Sign Up</StyledLink>
+            <Link to="/account/login">Login</Link>
+            <Link to="/account/signup">Sign Up</Link>
           </>
         )}
-      </RightLinks>
-    </NavbarContainer>
+      </div>
+    </nav>
   );
 }

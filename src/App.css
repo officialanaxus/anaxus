@@ -19,53 +19,96 @@ body, .App {
 }
 
 nav {
-  position: fixed;
+  position: fixed; /* Keep navbar fixed at the top */
   top: 20px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 20px;
-  background-color: rgba(11, 14, 19, 0.8);
+  padding: 2px 20px;
+  background-color: rgba(0, 0, 0, 0.7);
   color: white;
+  border: 1px solid rgba(255, 255, 255, 0.5); /* Add this line to restore the border */
   border-radius: 16px;
-  max-width: 1100px;
+  max-width: 1200px;
   width: 95%;
+  margin: 0 auto;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
   z-index: 1000;
-  box-sizing: border-box;
-  border: 1px solid #888;
-  backdrop-filter: blur(8px);
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
-  font-weight: 500;
 }
 
+/* Left and right sections for consistent alignment */
 .nav-left, .nav-right {
   display: flex;
   align-items: center;
-  gap: 20px;
+  justify-content: center;
+  gap: 12px; /* Controls spacing for nav links */
 }
 
-.nav-center h2 {
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 1px; /* Controls spacing between logo and text */
+}
+
+.nav-logo img {
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.nav-logo h2 {
   margin: 0;
+  padding: 0;
   font-size: 1.5rem;
   font-weight: 700;
-  border: 2px solid white;
-  padding: 5px;
-  display: inline-block;
-  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  line-height: 40px; /* Match the height of the logo */
+}
+
+.nav-divider {
+  height: 24px;
+  width: 1px;
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
 nav a {
+  margin: 0;
+  padding: 0;
   color: white;
-  text-decoration: none;
+  text-decoration: none; /* Remove underline */
   font-size: 1.1rem;
   font-weight: 700;
-  transition: transform 0.2s ease, color 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  line-height: 40px; /* Match the height of the logo and title */
+  transition: color 0.2s ease, transform 0.2s ease;
 }
 
 nav a:hover {
-  transform: scale(1.1);
   color: #3A8DFF;
-  text-decoration: none;
+  transform: scale(1.1);
+  text-decoration: none; /* Ensure underline doesn't appear on hover */
+}
+
+nav button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none; /* Remove underline */
+  display: inline-flex;
+  align-items: center;
+  line-height: 40px; /* Match the height of the logo and title */
+}
+
+nav button:hover {
+  color: #3A8DFF;
+  text-decoration: none; /* Ensure underline doesn't appear on hover */
 }

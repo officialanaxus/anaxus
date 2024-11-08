@@ -1,30 +1,80 @@
 /* Home.css */
 
 .home-container {
-  padding: 100px;
+  padding: 0;
+  margin: 0;
+  height: auto;
   color: #eaeaea;
-  background: transparent; /* Ensure background is transparent */
+  background: transparent;
 }
 
 .hero-section {
   text-align: center;
-  padding: 40px 0;
-  background: transparent; /* Ensure no background color */
+  padding: 40px 20px;
+  height: 100vh; /* Full screen for the hero section */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  position: relative; /* For positioning the scroll indicator */
 }
 
 .hero-section h1 {
-  font-size: 2.5rem;
-  color: #3A8DFF; /* Nice blue color for the main title */
+  font-size: 3rem;
+  color: #3A8DFF; /* Blue color for the main title */
 }
 
 .hero-section p {
+  font-size: 1.5rem;
+  margin-top: 20px;
+}
+
+.scroll-indicator {
+  position: fixed;
+  bottom: 10px; /* Positioned above the bottom edge */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+  transition: opacity 0.1s ease; /* Faster fading */
+}
+
+.scroll-indicator p {
+  margin: 0;
   font-size: 1.2rem;
-  margin-top: 10px;
+  color: #ffffff;
+}
+
+.scroll-indicator .arrow-down {
+  font-size: 2rem;
+  color: #ffffff;
+  margin-top: 5px;
+}
+
+/* Pulsating animation for the text and arrow */
+@keyframes fade-in-out {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
 }
 
 .services-section {
-  padding: 40px 20px;
-  background: transparent; /* Ensure no background color */
+  padding: 1px 20px;
+  background: transparent;
+  opacity: 0; /* Initially hidden */
+  transform: translateY(10px); /* Minimal offset for smoother appearance */
+  transition: opacity 0.3s ease, transform 0.3s ease; /* Faster animation for instant feedback */
+}
+
+.services-section.visible {
+  opacity: 1; /* Fully visible */
+  transform: translateY(0); /* Reset offset */
 }
 
 .services-section h2 {
@@ -34,40 +84,28 @@
   margin-bottom: 30px;
 }
 
-/* Updated style for .service-card */
 .service-card {
-  background-color: rgba(0, 0, 0, 0.7); /* Slightly transparent black */
-  border: 1px solid rgba(58, 141, 255, 0.5); /* Softer blue border with transparency */
+  background-color: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(58, 141, 255, 0.5);
   border-radius: 8px;
   padding: 20px;
-  margin: 20px auto; /* Center the card */
-  max-width: 1200px; /* Slightly wider than the navbar */
-  width: 98%; /* Allows responsive shrinking on smaller screens */
-  backdrop-filter: blur(6px); /* Adds a blur effect */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
-  transition: transform 0.3s ease, backdrop-filter 0.3s ease; /* Smooth transition */
+  margin: 20px auto;
+  max-width: 1200px;
+  width: 98%;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, backdrop-filter 0.3s ease;
 }
 
 .service-card:hover {
-  transform: scale(1); /* Slight zoom on hover */
-  backdrop-filter: blur(10px); /* Increase blur on hover */
-}
-
-.service-card h3 {
-  font-size: 1.5rem;
-  color: #ffffff;
-}
-
-.service-card p {
-  font-size: 1rem;
-  color: #cccccc;
-  margin-top: 10px;
+  transform: scale(1);
+  backdrop-filter: blur(10px);
 }
 
 .contact-section {
   padding: 40px 20px;
   text-align: center;
-  background: transparent; /* Ensure no background color */
+  background: transparent;
 }
 
 .contact-section h2 {
