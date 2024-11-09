@@ -6,8 +6,7 @@
 body, .App {
   text-align: center;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column; /* Ensure proper layout for navbar, content, and footer */
   min-height: 100vh;
   font-family: 'Inter', sans-serif;
   color: white;
@@ -111,4 +110,35 @@ nav button {
 nav button:hover {
   color: #3A8DFF;
   text-decoration: none; /* Ensure underline doesn't appear on hover */
+}
+
+/* Footer Styles */
+.footer {
+  background-color: rgba(0, 0, 0, 0.9);
+  color: #eaeaea;
+  text-align: center;
+  padding: 20px;
+  width: 100%;
+  border-top: 1px solid #3A8DFF;
+  margin-top: auto; /* Push footer to the bottom of the page */
+}
+
+.footer-links {
+  margin-bottom: 10px;
+}
+
+.footer-link {
+  color: #3A8DFF;
+  text-decoration: none;
+  margin: 0 15px;
+  font-size: 1rem;
+}
+
+.footer-link:hover {
+  text-decoration: underline;
+}
+
+.footer-text {
+  font-size: 0.9rem;
+  color: #cccccc;
 }

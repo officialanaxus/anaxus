@@ -1,16 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import emailjs from 'emailjs-com';
-import './BookNow.css';  // CSS file for styling the Book Now page
+import { supabase } from '../supabaseClient'; // Ensure Supabase is set up in your project
+import './BookNow.css'; // CSS file for styling the Book Now page
 
 function BookNow() {
   const [formData, setFormData] = useState({
-    name: '',
     email: '',
+    name: '',
     phone: '',
     date: '',
     service: '',
     details: '',
   });
+
+  useEffect(() => {
+    const fetchUserEmail = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+
+      if (session) {
+        setFormData((prevFormData) => ({
+          ...prevFormData,
+          email: session.user.email, // Autofill the email field with the logged-in user's email
+        }));
+      }
+    };
+
+    fetchUserEmail();
+  }, []);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -20,14 +36,21 @@ function BookNow() {
     e.preventDefault();
     emailjs
       .send(
-        'service_cpkajrx',     // Replace with your EmailJS Service ID
-        'template_5hx8yn9',    // Replace with your EmailJS Template ID
+        'service_cpkajrx', // Replace with your EmailJS Service ID
+        'template_5hx8yn9', // Replace with your EmailJS Template ID
         formData,
-        'T6hrrAGFFeASGhffB'         // Replace with your EmailJS User ID
+        'T6hrrAGFFeASGhffB' // Replace with your EmailJS User ID
       )
-      .then((response) => {
+      .then(() => {
         alert('Appointment request sent successfully!');
-        setFormData({ name: '', email: '', phone: '', date: '', service: '', details: '' });
+        setFormData({
+          email: formData.email, // Keep the autofilled email after submission
+          name: '',
+          phone: '',
+          date: '',
+          service: '',
+          details: '',
+        });
       })
       .catch((error) => {
         console.error('Error sending email:', error);
@@ -35,45 +58,81 @@ function BookNow() {
       });
   };
 
+  const today = new Date().toISOString().split('T')[0];
+
   return (
     <div className="book-now-container">
       <h1>Book an Appointment</h1>
       <form className="book-now-form" onSubmit={handleSubmit}>
         <label>
-          Name:
-          <input type="text" name="name" value={formData.name} onChange={handleChange} required />
-        </label>
-        <label>
-          Email:
-          <input type="email" name="email" value={formData.email} onChange={handleChange} required />
-        </label>
-        <label>
-          Phone Number:
-          <input type="tel" name="phone" value={formData.phone} onChange={handleChange} required />
-        </label>
-        <label>
-          Preferred Date:
+          Email
           <input
-            type="date"
-            name="date"
-            value={formData.date || new Date().toISOString().split("T")[0]} // Defaults to today if formData.date is empty
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+            placeholder="Your Email" // Placeholder text for the email input
+            className="email-input" // New CSS class for the email input
+          />
+        </label>
+        <label>
+          Name
+          <input
+            type="text"
+            name="name"
+            value={formData.name}
             onChange={handleChange}
             required
           />
         </label>
         <label>
-          Service Type:
-          <select name="service" value={formData.service} onChange={handleChange} required>
+          Phone Number
+          <input
+            type="tel"
+            name="phone"
+            value={formData.phone}
+            onChange={handleChange}
+            required
+          />
+        </label>
+        <label>
+          Preferred Date
+          <div className="custom-date-container">
+            <input
+              id="date-picker"
+              type="date"
+              name="date"
+              value={formData.date || today}
+              onChange={handleChange}
+              required
+              className="hidden-date-input"
+              min={today}
+            />
+          </div>
+        </label>
+        <label>
+          Service Type
+          <select
+            name="service"
+            value={formData.service}
+            onChange={handleChange}
+            required
+          >
             <option value="">Select a service</option>
             <option value="Networking Setup">Networking Setup</option>
-            <option value="Computer Troubleshooting">Computer Troubleshooting</option>
+            <option value="Computer Troubleshooting">
+              Computer Troubleshooting
+            </option>
             <option value="Home Theater">Home Theater/Cable Management</option>
-            <option value="Business Technical Support">Business Technical Support</option>
+            <option value="Business Technical Support">
+              Business Technical Support
+            </option>
             <option value="Other">Other (please provide details)</option>
           </select>
         </label>
         <label>
-          Additional details/Brief description:
+          Additional details/Brief description
           <textarea
             name="details"
             value={formData.details}

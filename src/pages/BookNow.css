@@ -1,5 +1,3 @@
-/* BookNow.css */
-
 .book-now-container {
   max-width: 600px;
   margin: 0 auto;
@@ -22,9 +20,10 @@ h1 {
 label {
   font-weight: 500;
   color: #eaeaea;
-  margin-bottom: 5px; /* Add space between label and input */
-  text-align: left; /* Aligns text to the left */
-  display: block; /* Ensures label is above input */
+  margin-bottom: 5px;
+  text-align: left;
+  display: block;
+  font-weight: bold;
 }
 
 input, select, textarea {
@@ -33,14 +32,26 @@ input, select, textarea {
   margin-top: 5px;
   border-radius: 5px;
   border: 1px solid #3A8DFF;
-  background-color: rgba(255, 255, 255, 0.1); /* White background */
-  color: #ffffff; /* Black text */
+  background-color: rgba(0, 0, 0, 0.3); /* Dark semi-transparent background */
+  color: #ffffff;
+  box-sizing: border-box;
+}
+
+/* Styling specifically for the email input */
+.email-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid #000000;
+  background-color: rgba(0, 0, 0, 0.3); /* Matches other inputs */
+  color: #ffffff;
   box-sizing: border-box;
 }
 
 /* Ensure select box matches input and textarea in height */
 select {
-  height: 44px; /* Adjust height to match input */
+  height: 44px;
 }
 
 textarea {
@@ -61,4 +72,29 @@ button[type="submit"] {
 
 button[type="submit"]:hover {
   background-color: #3378cc;
+}
+
+/* Custom Calendar Button for Date Picker */
+input[type="date"] {
+  box-sizing: border-box;
+  position: relative;
+  text-indent: 10px; /* Adjust space between date text and button */
+}
+
+/* Adjust calendar button position */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  background: url('https://raw.githubusercontent.com/officialanaxus/anaxus/refs/heads/main/Images/calendar-event.png') no-repeat center center; /* Custom logo */
+  background-size: contain; /* Ensure the logo fits inside the button */
+  cursor: pointer;
+  align-items: center;
+  opacity: 1; /* Ensure the button is visible */
+  position: absolute; /* Ensure it aligns properly within the input */
+  left: 10px; /* Align to the right edge */
+  margin-bottom: 1px;
+}
+
+/* Remove inner spin and clear buttons for consistency */
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-clear-button {
+  display: none;
 }

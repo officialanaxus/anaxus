@@ -25,7 +25,10 @@ export default function Login() {
     <div className="auth-container">
       <div className="auth-box">
         <Link to="/" className="back-button">← Back to Home</Link>
-        <h1 className="auth-title">Login</h1>
+        <h1 className="auth-title">
+          Login
+          <span className="auth-subtitle">(You must login to book an appointment)</span>
+        </h1>
         <input
           type="email"
           placeholder="Email"

@@ -25,8 +25,19 @@
 
 .auth-title {
   font-size: 2rem;
-  color: #3A8DFF;
-  margin-bottom: 1.5rem;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.auth-subtitle {
+  display: block;
+  font-size: 0.9rem; /* Smaller text size */
+  font-weight: normal; /* Default weight */
+  color: white; /* White text */
+  margin-top: 5px; /* Small gap between title and subtitle */
+  text-align: center; /* Center align below the title */
 }
 
 .auth-input {

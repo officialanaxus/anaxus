@@ -48,7 +48,7 @@ a:hover {
 
 /* Updated style for .support-tips to match .service-card */
 .support-tips {
-  background-color: rgba(0, 0, 0, 0.7); /* Slightly transparent black */
+  background-color: rgba(0, 0, 0, 0.3); /* Slightly transparent black */
   padding: 15px;
   border-radius: 8px;
   border: 1px solid rgba(58, 141, 255, 0.5); /* Softer blue border with transparency */
