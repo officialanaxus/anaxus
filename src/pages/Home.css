@@ -45,23 +45,13 @@
 .scroll-indicator p {
   margin: 0;
   font-size: 1.2rem;
-  color: #ffffff;
+  color: #ffffff94;
 }
 
 .scroll-indicator .arrow-down {
   font-size: 2rem;
-  color: #ffffff;
+  color: #ffffff94;
   margin-top: 5px;
-}
-
-/* Pulsating animation for the text and arrow */
-@keyframes fade-in-out {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
 }
 
 .services-section {

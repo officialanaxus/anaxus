@@ -7,7 +7,7 @@ function Home() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const fadeOutThreshold = 120; // Fade out completely within 200px of scrolling
+      const fadeOutThreshold = 120; // Fade out completely within 120px of scrolling
 
       // Trigger visibility of "Our Services" after minimal scroll
       if (window.scrollY > 0) {
@@ -35,7 +35,7 @@ function Home() {
           className="scroll-indicator"
           style={{ opacity: scrollOpacity }}
         >
-          <p>Scroll</p>
+          <p>More Info</p>
           <span className="arrow-down">↓</span>
         </div>
       </header>
@@ -61,6 +61,11 @@ function Home() {
         <div className="service-card">
           <h3>Technical Support for Businesses</h3>
           <p>Our team provides ongoing support to keep your office tech and systems optimized for productivity and efficiency.</p>
+        </div>
+
+        <div className="service-card"> {/* New service card */}
+          <h3>General Inquiries</h3>
+          <p>We specialize in finding solutions for most tech-related challenges. Reach out, and we’ll help you figure it out!</p>
         </div>
       </section>
 

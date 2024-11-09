@@ -49,7 +49,6 @@ nav {
 .nav-logo {
   display: flex;
   align-items: center;
-  gap: 1px; /* Controls spacing between logo and text */
 }
 
 .nav-logo img {
