@@ -21,6 +21,15 @@ export default function Login() {
     });
   };
 
+  const handleMicrosoftLogin = async () => {
+    await supabase.auth.signInWithOAuth({
+      provider: 'azure',
+      options: {
+        redirectTo: `${window.location.origin}/book-now`, // Redirect to "Book Now" after Microsoft login
+      },
+    });
+  };
+
   return (
     <div className="auth-container">
       <div className="auth-box">
@@ -44,8 +53,36 @@ export default function Login() {
           className="auth-input"
         />
         <button onClick={handleLogin} className="auth-button">Login</button>
+        <div className="auth-create-account">
+          <span>Don’t have an account?</span>
+          <Link to="/account/signup" className="auth-link">Create an Account</Link>
+        </div>
         <div className="auth-or">or</div>
-        <button onClick={handleGoogleLogin} className="auth-button auth-google-button">Login with Google</button>
+        <div className="auth-social-buttons">
+          {/* Google Button with Tooltip */}
+          <div className="tooltip">
+            <button onClick={handleGoogleLogin} className="social-button">
+              <img
+                src="https://raw.githubusercontent.com/officialanaxus/anaxus/refs/heads/main/Images/Google%20icon.svg"
+                alt="Google"
+                className="social-logo"
+              />
+            </button>
+            <span className="tooltip-text">Login with Google</span>
+          </div>
+
+          {/* Microsoft Button with Tooltip */}
+          <div className="tooltip">
+            <button onClick={handleMicrosoftLogin} className="social-button">
+              <img
+                src="https://raw.githubusercontent.com/officialanaxus/anaxus/refs/heads/main/Images/Microsoft%20icon.svg"
+                alt="Microsoft"
+                className="social-logo"
+              />
+            </button>
+            <span className="tooltip-text">Login with Microsoft</span>
+          </div>
+        </div>
       </div>
     </div>
   );

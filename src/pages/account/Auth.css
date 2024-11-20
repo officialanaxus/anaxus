@@ -1,5 +1,3 @@
-/* src/pages/account/Auth.css */
-
 .auth-container {
   display: flex;
   align-items: center;
@@ -94,4 +92,81 @@
 
 .back-button:hover {
   text-decoration: underline;
+}
+
+/* Social login buttons */
+.auth-social-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.social-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 50%;
+  transition: transform 0.2s ease;
+}
+
+.social-button:hover {
+  transform: scale(1.1);
+}
+
+.social-logo {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+/* Create an Account link styling */
+.auth-create-account {
+  margin-top: 10px;
+  text-align: center;
+  color: #eaeaea;
+}
+
+.auth-create-account span {
+  margin-right: 5px;
+  font-size: 0.9rem;
+}
+
+.auth-link {
+  color: #3A8DFF;
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+.auth-link:hover {
+  text-decoration: underline;
+}
+
+/* Tooltip styling */
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltip-text {
+  visibility: hidden;
+  width: 120px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 4px;
+  padding: 5px 0;
+  position: absolute;
+  bottom: 125%; /* Position above the button */
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
 }

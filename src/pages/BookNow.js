@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import emailjs from 'emailjs-com';
 import { supabase } from '../supabaseClient'; // Ensure Supabase is set up in your project
+import { useNavigate } from 'react-router-dom'; // For navigation
 import './BookNow.css'; // CSS file for styling the Book Now page
 
 function BookNow() {
@@ -9,14 +10,20 @@ function BookNow() {
     name: '',
     phone: '',
     date: '',
+    time: '',
     service: '',
     details: '',
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false); // State to manage button disabling
+  const [phoneError, setPhoneError] = useState(''); // State to manage phone validation error
+  const [isPopupVisible, setIsPopupVisible] = useState(false); // State for showing popup
+  const navigate = useNavigate(); // For navigation
+
   useEffect(() => {
     const fetchUserEmail = async () => {
       const { data: { session } } = await supabase.auth.getSession();
-
+    
       if (session) {
         setFormData((prevFormData) => ({
           ...prevFormData,
@@ -28,26 +35,76 @@ function BookNow() {
     fetchUserEmail();
   }, []);
 
+  const formatPhoneNumber = (value) => {
+    const phoneNumber = value.replace(/\D/g, ''); // Remove non-numeric characters
+    if (phoneNumber.length <= 3) {
+      return phoneNumber;
+    }
+    if (phoneNumber.length <= 6) {
+      return `${phoneNumber.slice(0, 3)}-${phoneNumber.slice(3)}`;
+    }
+    return `${phoneNumber.slice(0, 3)}-${phoneNumber.slice(3, 6)}-${phoneNumber.slice(6, 10)}`;
+  };
+
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+
+    if (name === 'phone') {
+      const formattedPhone = formatPhoneNumber(value);
+      setFormData((prevFormData) => ({ ...prevFormData, phone: formattedPhone }));
+
+      // Check for valid phone format
+      const phoneRegex = /^\d{3}-\d{3}-\d{4}$/;
+      if (!phoneRegex.test(formattedPhone) && formattedPhone.length > 0) {
+        setPhoneError('Invalid phone number format. Use 123-456-7890');
+      } else {
+        setPhoneError('');
+      }
+      return;
+    }
+
+    // Update date and time fields correctly
+    setFormData({ ...formData, [name]: value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+  
+    if (phoneError) {
+      alert('Please fix errors before submitting.');
+      return;
+    }
+  
+    setIsSubmitting(true); // Disable the button
+  
+    // Format the current date
+    const currentDate = new Date().toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    });
+  
+    // Prepare data for EmailJS
+    const emailData = {
+      ...formData,
+      current_date: currentDate, // Add current date
+    };
+  
     emailjs
       .send(
-        'service_cpkajrx', // Replace with your EmailJS Service ID
+        'service_o2a6p78', // Replace with your EmailJS Service ID
         'template_5hx8yn9', // Replace with your EmailJS Template ID
-        formData,
+        emailData, // Send form data including current_date
         'T6hrrAGFFeASGhffB' // Replace with your EmailJS User ID
       )
       .then(() => {
-        alert('Appointment request sent successfully!');
+        setIsPopupVisible(true); // Show the success popup
         setFormData({
           email: formData.email, // Keep the autofilled email after submission
           name: '',
           phone: '',
           date: '',
+          time: '',
           service: '',
           details: '',
         });
@@ -55,10 +112,17 @@ function BookNow() {
       .catch((error) => {
         console.error('Error sending email:', error);
         alert('Failed to send appointment request. Please try again.');
+      })
+      .finally(() => {
+        setIsSubmitting(false); // Re-enable the button
       });
   };
 
   const today = new Date().toISOString().split('T')[0];
+
+  const handleReturnHome = () => {
+    navigate('/'); // Redirect to the homepage
+  };
 
   return (
     <div className="book-now-container">
@@ -71,9 +135,10 @@ function BookNow() {
             name="email"
             value={formData.email}
             onChange={handleChange}
+            disabled
             required
-            placeholder="Your Email" // Placeholder text for the email input
-            className="email-input" // New CSS class for the email input
+            placeholder="Your Email"
+            className="email-input"
           />
         </label>
         <label>
@@ -94,21 +159,42 @@ function BookNow() {
             value={formData.phone}
             onChange={handleChange}
             required
+            placeholder="123-456-7890"
           />
+          {phoneError && <p className="error-message">{phoneError}</p>}
         </label>
         <label>
-          Preferred Date
-          <div className="custom-date-container">
+          Preferred Date & Time
+          <div className="date-time-container">
             <input
               id="date-picker"
               type="date"
               name="date"
-              value={formData.date || today}
+              value={formData.date || today} // Correctly handle initial value
               onChange={handleChange}
               required
               className="hidden-date-input"
               min={today}
             />
+            <select
+              name="time"
+              value={formData.time} // Correctly bind to formData.time
+              onChange={handleChange}
+              required
+              className="time-select"
+            >
+              <option value="">Select Time</option>
+              <option value="9:00 AM">9:00 AM</option>
+              <option value="10:00 AM">10:00 AM</option>
+              <option value="11:00 AM">11:00 AM</option>
+              <option value="12:00 PM">12:00 PM</option>
+              <option value="1:00 PM">1:00 PM</option>
+              <option value="2:00 PM">2:00 PM</option>
+              <option value="3:00 PM">3:00 PM</option>
+              <option value="4:00 PM">4:00 PM</option>
+              <option value="5:00 PM">5:00 PM</option>
+              <option value="6:00 PM">6:00 PM</option>
+            </select>
           </div>
         </label>
         <label>
@@ -138,11 +224,26 @@ function BookNow() {
             value={formData.details}
             onChange={handleChange}
             placeholder="Provide any specific information/brief description..."
-            required
           />
         </label>
-        <button type="submit">Submit Appointment Request</button>
+        <button type="submit" disabled={isSubmitting || phoneError}>
+          {isSubmitting ? 'Submitting...' : 'Submit Appointment Request'}
+        </button>
       </form>
+
+      {/* Popup for success message */}
+      {isPopupVisible && (
+        <div className="popup-container">
+          <div className="popup-content">
+            <h2>Request Sent</h2>
+            <p>
+              Your appointment request has been sent successfully. 
+              You should receive an automated email shortly and will hear back from us soon.
+            </p>
+            <button onClick={handleReturnHome}>Return to Home</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

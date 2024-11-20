@@ -38,8 +38,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  z-index: 10;
-  transition: opacity 0.1s ease; /* Faster fading */
+  z-index: 10; /* Default z-index to keep it above elements */
+  opacity: 1; /* Fully visible by default */
+  pointer-events: auto; /* Allow interaction when visible */
+}
+
+.scroll-indicator.hidden {
+  opacity: 0; /* Fully fade out */
+  z-index: -1; /* Move behind all other elements */
+  pointer-events: none; /* Disable interaction when hidden */
 }
 
 .scroll-indicator p {

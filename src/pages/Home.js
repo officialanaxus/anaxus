@@ -22,8 +22,12 @@ function Home() {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const optimizedHandleScroll = () => {
+      window.requestAnimationFrame(handleScroll);
+    };
+
+    window.addEventListener('scroll', optimizedHandleScroll);
+    return () => window.removeEventListener('scroll', optimizedHandleScroll);
   }, []);
 
   return (
@@ -63,7 +67,7 @@ function Home() {
           <p>Our team provides ongoing support to keep your office tech and systems optimized for productivity and efficiency.</p>
         </div>
 
-        <div className="service-card"> {/* New service card */}
+        <div className="service-card">
           <h3>General Inquiries</h3>
           <p>We specialize in finding solutions for most tech-related challenges. Reach out, and we’ll help you figure it out!</p>
         </div>

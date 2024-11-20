@@ -8,6 +8,7 @@ import Support from './pages/Support';
 import Login from './pages/account/Login';
 import SignUp from './pages/account/SignUp';
 import PrivacyPolicy from './pages/PrivacyPolicy';
+import Terms from './pages/Terms'; // Import Terms
 import Navbar from './components/Navbar';
 import PrivateRoute from './components/PrivateRoute';
 import Footer from './components/Footer';
@@ -73,6 +74,7 @@ function App() {
         <Route path="/account/login" element={<Login />} />
         <Route path="/account/signup" element={<SignUp />} />
         <Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />
+        <Route path="/terms" element={<Terms />} /> {/* Add Terms Route */}
       </Routes>
       <Footer />
     </div>

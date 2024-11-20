@@ -122,6 +122,19 @@ nav button:hover {
   margin-top: auto; /* Push footer to the bottom of the page */
 }
 
+/* Footer Styles */
+.footer {
+  position: relative; /* Establish a new stacking context for the footer */
+  z-index: 20; /* Ensure the footer is above hidden elements like the scroll-indicator */
+  background-color: rgba(0, 0, 0, 0.9);
+  color: #eaeaea;
+  text-align: center;
+  padding: 20px;
+  width: 100%;
+  border-top: 1px solid #3A8DFF;
+  margin-top: auto; /* Push footer to the bottom of the page */
+}
+
 .footer-links {
   margin-bottom: 10px;
 }
@@ -131,6 +144,8 @@ nav button:hover {
   text-decoration: none;
   margin: 0 15px;
   font-size: 1rem;
+  position: relative; /* Ensure links are clickable even in complex layouts */
+  z-index: 21; /* Higher than the footer background to ensure interaction */
 }
 
 .footer-link:hover {
@@ -140,4 +155,6 @@ nav button:hover {
 .footer-text {
   font-size: 0.9rem;
   color: #cccccc;
+  position: relative; /* Ensure no interference from other elements */
+  z-index: 21; /* Same as footer-link for consistency */
 }
