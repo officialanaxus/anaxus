@@ -93,6 +93,9 @@ nav a, nav button {
   text-decoration: none;
   display: inline-flex;
   align-items: center;
+  background: none; /* Transparent background */
+  border: none; /* Remove default button border */
+  cursor: pointer; /* Add pointer for hover effect */
   transition: color 0.2s ease, transform 0.2s ease;
 }
 
