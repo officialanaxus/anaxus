@@ -40,7 +40,7 @@
   align-items: center;
   z-index: 10; /* Default z-index to keep it above elements */
   opacity: 1; /* Fully visible by default */
-  pointer-events: auto; /* Allow interaction when visible */
+  pointer-events: none; /* Allow interaction when visible */
 }
 
 .scroll-indicator.hidden {

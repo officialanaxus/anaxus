@@ -7,7 +7,7 @@ function Home() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const fadeOutThreshold = 120; // Fade out completely within 120px of scrolling
+      const fadeOutThreshold = 50; // Fade out completely within 120px of scrolling
 
       // Trigger visibility of "Our Services" after minimal scroll
       if (window.scrollY > 0) {
