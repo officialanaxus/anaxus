@@ -10,14 +10,14 @@ export default function SignUp() {
 
   const handleSignUp = async () => {
     setIsSubmitting(true); // Disable the button to prevent duplicate submissions
-  
+
     try {
       const timeout = new Promise((_, reject) =>
         setTimeout(() => reject(new Error('Request timed out')), 10000) // 10-second timeout
       );
       const signupRequest = supabase.auth.signUp({ email, password });
       const { error } = await Promise.race([signupRequest, timeout]);
-  
+
       if (error) {
         if (error.message.includes('User already registered')) {
           alert('This email is already associated with an account. Please log in.');
@@ -79,6 +79,10 @@ export default function SignUp() {
           disabled={isSubmitting}>
           {isSubmitting ? 'Processing...' : 'Sign Up'}
         </button>
+        <div className="auth-create-account">
+          <span>Have an account?</span>
+          <Link to="/account/login" className="auth-link">Login</Link>
+        </div>
         <div className="auth-or">or</div>
         <div className="auth-social-buttons">
           {/* Google Button with Tooltip */}
@@ -104,6 +108,8 @@ export default function SignUp() {
             </button>
             <span className="tooltip-text">Sign Up with Microsoft</span>
           </div>
+        </div>
+        <div className="auth-footer auth-text-centered">
         </div>
       </div>
     </div>
