@@ -69,32 +69,35 @@ function BookNow() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-  
+
     if (phoneError) {
       alert('Please fix errors before submitting.');
       return;
     }
-  
+
     setIsSubmitting(true); // Disable the button
-  
-    // Format the current date
-    const currentDate = new Date().toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-    });
+
+    // Format date to MM/DD/YYYY for EmailJS
+    const formattedDate = new Date(formData.date).toLocaleDateString('en-US');
   
     // Prepare data for EmailJS
     const emailData = {
-      ...formData,
-      current_date: currentDate, // Add current date
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      date: formattedDate, // Use formatted date
+      time: formData.time,
+      service: formData.service,
+      details: formData.details,
     };
+  
+    console.log('Sending Email Data:', emailData); // Debugging log for email data
   
     emailjs
       .send(
         'service_o2a6p78', // Replace with your EmailJS Service ID
         'template_5hx8yn9', // Replace with your EmailJS Template ID
-        emailData, // Send form data including current_date
+        emailData, // Send formatted data
         'T6hrrAGFFeASGhffB' // Replace with your EmailJS User ID
       )
       .then(() => {
@@ -118,7 +121,8 @@ function BookNow() {
       });
   };
 
-  const today = new Date().toISOString().split('T')[0];
+  // Get today's date in the correct format for the date picker
+  const today = new Date().toLocaleDateString('en-CA'); // Format as YYYY-MM-DD
 
   const handleReturnHome = () => {
     navigate('/'); // Redirect to the homepage
@@ -170,7 +174,7 @@ function BookNow() {
               id="date-picker"
               type="date"
               name="date"
-              value={formData.date || today} // Correctly handle initial value
+              value={formData.date} // Set default value to today's date
               onChange={handleChange}
               required
               className="hidden-date-input"
