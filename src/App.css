@@ -131,6 +131,7 @@ nav a:hover, nav button:hover {
 .footer-text {
   font-size: clamp(0.8rem, 1vw, 0.9rem); /* Scalable font size */
   color: #cccccc;
+  margin-left: 20px;
 }
 
 /* Media Queries for Responsiveness */
