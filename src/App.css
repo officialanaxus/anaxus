@@ -62,6 +62,7 @@ nav {
 .nav-logo {
   display: flex;
   align-items: center;
+  pointer-events: none;
   gap: 8px; /* Added spacing for better separation */
 }
 
