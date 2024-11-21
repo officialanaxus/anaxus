@@ -103,6 +103,7 @@ nav a, nav button {
 nav a:hover, nav button:hover {
   color: #3A8DFF;
   transform: scale(1.1);
+  text-decoration: none;
 }
 
 /* Footer Styles */
