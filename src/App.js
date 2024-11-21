@@ -7,12 +7,14 @@ import BookNow from './pages/BookNow';
 import Support from './pages/Support';
 import Login from './pages/account/Login';
 import SignUp from './pages/account/SignUp';
+import ResetPassword from './pages/account/ResetPassword';
+import SetNewPassword from './pages/account/SetNewPassword'; // Import SetNewPassword
 import PrivacyPolicy from './pages/PrivacyPolicy';
-import Terms from './pages/Terms'; // Import Terms
+import Terms from './pages/Terms';
 import Navbar from './components/Navbar';
 import PrivateRoute from './components/PrivateRoute';
 import Footer from './components/Footer';
-import ScrollToTop from './components/ScrollToTop'; // Import ScrollToTop
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -42,10 +44,20 @@ function App() {
     setUser(null);
   };
 
-  const showNavbar = !['/account/login', '/account/signup'].includes(location.pathname);
+  const showNavbar = ![
+    '/account/login',
+    '/account/signup',
+    '/account/resetpassword',
+    '/account/setnewpassword',
+  ].includes(location.pathname);
 
   useEffect(() => {
-    if (['/account/login', '/account/signup'].includes(location.pathname)) {
+    if ([
+      '/account/login',
+      '/account/signup',
+      '/account/resetpassword',
+      '/account/setnewpassword',
+    ].includes(location.pathname)) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'auto';
@@ -58,7 +70,7 @@ function App() {
 
   return (
     <div className="App">
-      <ScrollToTop /> {/* Add ScrollToTop here */}
+      <ScrollToTop />
       {showNavbar && <Navbar user={user} onSignOut={handleSignOut} />}
       <Routes>
         <Route path="/" element={<Home />} />
@@ -73,8 +85,10 @@ function App() {
         />
         <Route path="/account/login" element={<Login />} />
         <Route path="/account/signup" element={<SignUp />} />
+        <Route path="/account/resetpassword" element={<ResetPassword />} />
+        <Route path="/account/setnewpassword" element={<SetNewPassword />} /> {/* Add the SetNewPassword route */}
         <Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />
-        <Route path="/terms" element={<Terms />} /> {/* Add Terms Route */}
+        <Route path="/terms" element={<Terms />} />
       </Routes>
       <Footer />
     </div>

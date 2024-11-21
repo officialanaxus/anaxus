@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import './Auth.css';
 
 export default function SignUp() {
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -15,8 +16,19 @@ export default function SignUp() {
       const timeout = new Promise((_, reject) =>
         setTimeout(() => reject(new Error('Request timed out')), 10000) // 10-second timeout
       );
-      const signupRequest = supabase.auth.signUp({ email, password });
-      const { error } = await Promise.race([signupRequest, timeout]);
+
+      // Sign up the user with email, password, and metadata
+      const signupRequest = supabase.auth.signUp({
+        email,
+        password,
+        options: {
+          data: {
+            display_name: name, // Add the name as part of the user's metadata
+          },
+        },
+      });
+
+      const { data, error } = await Promise.race([signupRequest, timeout]);
 
       if (error) {
         if (error.message.includes('User already registered')) {
@@ -25,7 +37,7 @@ export default function SignUp() {
           console.error('Error signing up:', error.message);
           alert('An error occurred during signup. Please try again.');
         }
-      } else {
+      } else if (data.user) {
         alert('Signup successful! Please check your email to confirm your account.');
       }
     } catch (err) {
@@ -59,6 +71,13 @@ export default function SignUp() {
       <div className="auth-box">
         <Link to="/" className="back-button">← Back to Home</Link>
         <h1 className="auth-title">Sign Up</h1>
+        <input
+          type="text"
+          placeholder="Full Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          className="auth-input"
+        />
         <input
           type="email"
           placeholder="Email"
