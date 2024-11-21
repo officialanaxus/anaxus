@@ -197,7 +197,6 @@ function BookNow() {
               <option value="3:00 PM">3:00 PM</option>
               <option value="4:00 PM">4:00 PM</option>
               <option value="5:00 PM">5:00 PM</option>
-              <option value="6:00 PM">6:00 PM</option>
             </select>
           </div>
         </label>
