@@ -34,10 +34,10 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 5px 10px; /* Adjusted for better click area */
+  padding: 10px 15px; /* Increased padding for better interaction */
   background-color: rgba(0, 0, 0, 0.7);
   color: white;
-  border: 1px solid rgba(255, 255, 255, 0.5); /* Restored border */
+  border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 16px;
   max-width: 1200px;
   width: 90%; /* Dynamic width for smaller screens */
@@ -56,7 +56,7 @@ nav {
 .nav-right {
   display: flex;
   align-items: center;
-  gap: 1px; /* Controls spacing for nav links */
+  gap: 8px; /* Adjusted spacing for smaller buttons */
 }
 
 .nav-logo {
@@ -76,7 +76,6 @@ nav {
   font-size: clamp(1.2rem, 2.5vw, 1.5rem); /* Scalable font size */
   font-weight: 700;
   line-height: 40px;
-  padding-right: 10px;
 }
 
 .nav-divider {
@@ -87,7 +86,7 @@ nav {
 
 nav a, nav button {
   margin: 0;
-  padding: 5px 10px; /* Added padding for easier interaction */
+  padding: 8px 12px; /* Adjusted for better interaction on touch devices */
   color: white;
   font-size: clamp(1rem, 1.5vw, 1.1rem); /* Scalable font size */
   font-weight: 700;
@@ -96,7 +95,7 @@ nav a, nav button {
   align-items: center;
   background: none; /* Transparent background */
   border: none; /* Remove default button border */
-  cursor: pointer; /* Add pointer for hover effect */
+  cursor: pointer;
   transition: color 0.2s ease, transform 0.2s ease;
 }
 
@@ -119,7 +118,6 @@ nav a:hover, nav button:hover {
 
 .footer-links {
   margin-bottom: 10px;
-  margin-left: 20px;
 }
 
 .footer-link {
@@ -136,24 +134,30 @@ nav a:hover, nav button:hover {
 .footer-text {
   font-size: clamp(0.8rem, 1vw, 0.9rem); /* Scalable font size */
   color: #cccccc;
-  margin-left: 20px;
 }
 
-/* Media Queries for Responsiveness */
+/* Responsive Design */
+
+/* Tablets */
 @media (max-width: 768px) {
   nav {
     flex-direction: column;
     padding: 15px;
   }
   .nav-left, .nav-right {
-    gap: 8px;
+    gap: 5px; /* Adjusted spacing for smaller screens */
   }
   .nav-logo img {
     width: 30px;
     height: 30px;
   }
+  nav a, nav button {
+    font-size: 0.9rem;
+    padding: 5px 8px;
+  }
 }
 
+/* Phones */
 @media (max-width: 480px) {
   body, .App {
     font-size: 90%;
@@ -164,5 +168,13 @@ nav a:hover, nav button:hover {
   .nav-logo img {
     width: 24px;
     height: 24px;
+  }
+  nav a, nav button {
+    font-size: 0.8rem;
+    padding: 4px 6px;
+  }
+  .footer {
+    font-size: 0.8rem;
+    padding: 15px;
   }
 }

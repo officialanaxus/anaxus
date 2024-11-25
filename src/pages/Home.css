@@ -1,5 +1,3 @@
-/* Home.css */
-
 .home-container {
   padding: 0;
   margin: 0;
@@ -8,6 +6,7 @@
   background: transparent;
 }
 
+/* Hero Section */
 .hero-section {
   text-align: center;
   padding: 40px 20px;
@@ -21,15 +20,16 @@
 }
 
 .hero-section h1 {
-  font-size: 3rem;
+  font-size: clamp(2.5rem, 5vw, 3rem); /* Scalable font size for responsiveness */
   color: #3A8DFF; /* Blue color for the main title */
 }
 
 .hero-section p {
-  font-size: 1.5rem;
+  font-size: clamp(1.2rem, 3vw, 1.5rem); /* Scalable font size for paragraph */
   margin-top: 20px;
 }
 
+/* Scroll Indicator */
 .scroll-indicator {
   position: fixed;
   bottom: 10px; /* Positioned above the bottom edge */
@@ -51,18 +51,19 @@
 
 .scroll-indicator p {
   margin: 0;
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 2.5vw, 1.2rem); /* Scalable font size */
   color: #ffffff94;
 }
 
 .scroll-indicator .arrow-down {
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 3vw, 2rem); /* Scalable font size */
   color: #ffffff94;
   margin-top: 5px;
 }
 
+/* Services Section */
 .services-section {
-  padding: 1px 20px;
+  padding: 20px;
   background: transparent;
   opacity: 0; /* Initially hidden */
   transform: translateY(10px); /* Minimal offset for smoother appearance */
@@ -75,7 +76,7 @@
 }
 
 .services-section h2 {
-  font-size: 2rem;
+  font-size: clamp(1.8rem, 4vw, 2rem); /* Scalable font size */
   text-align: center;
   color: #3A8DFF;
   margin-bottom: 30px;
@@ -95,10 +96,11 @@
 }
 
 .service-card:hover {
-  transform: scale(1);
+  transform: scale(1.02); /* Slight scaling effect on hover */
   backdrop-filter: blur(10px);
 }
 
+/* Contact Section */
 .contact-section {
   padding: 40px 20px;
   text-align: center;
@@ -106,12 +108,12 @@
 }
 
 .contact-section h2 {
-  font-size: 2rem;
+  font-size: clamp(1.8rem, 4vw, 2rem); /* Scalable font size */
   color: #3A8DFF;
 }
 
 .contact-section p {
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 3vw, 1.2rem); /* Scalable font size */
 }
 
 .contact-section a {
@@ -121,4 +123,51 @@
 
 .contact-section a:hover {
   text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 30px 10px;
+  }
+
+  .services-section {
+    padding: 15px;
+  }
+
+  .service-card {
+    margin: 15px auto;
+    padding: 15px;
+  }
+
+  .contact-section {
+    padding: 30px 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section {
+    height: 90vh; /* Slightly shorter for smaller screens */
+    padding: 20px 10px;
+  }
+
+  .hero-section h1 {
+    font-size: clamp(2rem, 5vw, 2.5rem); /* Adjusted for smaller screens */
+  }
+
+  .hero-section p {
+    font-size: clamp(1rem, 3vw, 1.2rem);
+  }
+
+  .scroll-indicator p, .scroll-indicator .arrow-down {
+    font-size: clamp(0.9rem, 2.5vw, 1rem); /* Smaller for phones */
+  }
+
+  .services-section {
+    padding: 10px;
+  }
+
+  .contact-section {
+    padding: 20px 10px;
+  }
 }

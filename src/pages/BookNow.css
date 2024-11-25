@@ -4,11 +4,29 @@
   padding: 150px;
   color: #eaeaea;
   border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0.6); /* Added background color for better visibility */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Added subtle shadow for depth */
+}
+
+/* Adjust container for smaller screens */
+@media (max-width: 768px) {
+  .book-now-container {
+    max-width: 80%; /* Reduce width for tablets */
+    padding: 100px 20px; /* Adjust padding */
+  }
+}
+
+@media (max-width: 480px) {
+  .book-now-container {
+    max-width: 95%; /* Almost full width for phones */
+    padding: 80px 10px; /* Reduce padding */
+  }
 }
 
 h1 {
   text-align: center;
   color: #3A8DFF;
+  font-size: clamp(1.8rem, 4vw, 2.4rem); /* Scalable font size */
 }
 
 .book-now-form {
@@ -18,12 +36,11 @@ h1 {
 }
 
 label {
-  font-weight: 500;
+  font-weight: bold;
   color: #eaeaea;
   margin-bottom: 5px;
   text-align: left;
   display: block;
-  font-weight: bold;
 }
 
 input, select, textarea {
@@ -32,26 +49,10 @@ input, select, textarea {
   margin-top: 5px;
   border-radius: 5px;
   border: 1px solid #3A8DFF;
-  background-color: rgba(0, 0, 0, 0.3); /* Dark semi-transparent background */
+  background-color: rgba(0, 0, 0, 0.3);
   color: #ffffff;
   box-sizing: border-box;
-}
-
-/* Styling specifically for the email input */
-.email-input {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 5px;
-  border-radius: 5px;
-  border: 1px solid rgb(50, 50, 50);
-  background-color: rgba(0, 0, 0, 0.3); /* Matches other inputs */
-  color: #ffffff;
-  box-sizing: border-box;
-}
-
-/* Ensure select box matches input and textarea in height */
-select {
-  height: 44px;
+  font-size: 1rem;
 }
 
 textarea {
@@ -60,49 +61,42 @@ textarea {
 }
 
 button[type="submit"] {
-  padding: 10px;
+  padding: 12px;
   border: none;
   background-color: #3A8DFF;
   color: white;
   font-weight: 700;
+  font-size: 1rem;
   cursor: pointer;
   border-radius: 5px;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
 button[type="submit"]:hover {
   background-color: #3378cc;
+  transform: scale(1.05);
 }
 
-/* Custom Calendar Button for Date Picker */
 input[type="date"] {
   box-sizing: border-box;
-  position: relative;
-  text-indent: 10px; /* Adjust space between date text and button */
+  text-indent: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #3A8DFF;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: #ffffff;
 }
 
-/* Adjust calendar button position */
 input[type="date"]::-webkit-calendar-picker-indicator {
-  background: url('https://raw.githubusercontent.com/officialanaxus/anaxus/refs/heads/main/Images/calendar-event.png') no-repeat center center; /* Custom logo */
-  background-size: contain; /* Ensure the logo fits inside the button */
+  background: url('https://raw.githubusercontent.com/officialanaxus/anaxus/refs/heads/main/Images/calendar-event.png') no-repeat center center;
+  background-size: contain;
   cursor: pointer;
-  align-items: center;
-  opacity: 1; /* Ensure the button is visible */
-  position: absolute; /* Ensure it aligns properly within the input */
-  left: 10px; /* Align to the right edge */
-  margin-bottom: 1px;
+  opacity: 1;
 }
 
-/* Remove inner spin and clear buttons for consistency */
 input[type="date"]::-webkit-inner-spin-button,
 input[type="date"]::-webkit-clear-button {
   display: none;
-}
-
-/* Blur effect for the background */
-.book-now-container.popup-active {
-  filter: blur(5px); /* Apply blur effect */
-  pointer-events: none; /* Disable interactions with the background */
 }
 
 /* Popup container styling */
@@ -112,31 +106,34 @@ input[type="date"]::-webkit-clear-button {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
+  background: rgba(0, 0, 0, 0.7);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000; /* Ensure it appears on top */
+  z-index: 1000;
 }
 
-/* Popup content styling */
 .popup-content {
-  background: rgb(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.7);
   padding: 20px;
   border-radius: 10px;
   text-align: center;
   max-width: 430px;
   width: 100%;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border: 2px solid rgb(0, 86, 179, 0.7);
+  border: 2px solid rgba(0, 86, 179, 0.7);
 }
 
 .popup-content h2 {
   margin-bottom: 15px;
+  font-size: 1.5rem;
+  color: #eaeaea;
 }
 
 .popup-content p {
   margin-bottom: 20px;
+  color: #cccccc;
+  font-size: 1rem;
 }
 
 .popup-content button {
@@ -147,8 +144,10 @@ input[type="date"]::-webkit-clear-button {
   font-size: 16px;
   border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
 .popup-content button:hover {
   background-color: #0056b3;
+  transform: scale(1.05);
 }

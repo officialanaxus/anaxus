@@ -1,5 +1,3 @@
-/* Support.css */
-
 .support-container {
   max-width: 50%;
   margin: 0 auto;
@@ -8,9 +6,25 @@
   border-radius: 8px;
 }
 
+/* Responsive adjustments for container */
+@media (max-width: 768px) {
+  .support-container {
+    max-width: 80%; /* Reduce width for tablets */
+    padding: 80px 20px; /* Adjust padding */
+  }
+}
+
+@media (max-width: 480px) {
+  .support-container {
+    max-width: 95%; /* Almost full width for phones */
+    padding: 60px 15px; /* Reduce padding for smaller screens */
+  }
+}
+
 h1 {
   text-align: center;
   color: #3A8DFF;
+  font-size: clamp(2rem, 4vw, 2.5rem); /* Scalable font size for responsiveness */
 }
 
 .contact-info {
@@ -19,11 +33,12 @@ h1 {
 
 .contact-info h2 {
   color: #3A8DFF;
+  font-size: clamp(1.5rem, 3vw, 2rem); /* Scalable font size */
 }
 
 .contact-info p,
 .support-tips p {
-  font-size: 1rem;
+  font-size: clamp(1rem, 2.5vw, 1.2rem); /* Scalable font size */
   margin-top: 10px;
   line-height: 1.6;
 }
@@ -35,6 +50,7 @@ ul {
 
 ul li {
   margin-bottom: 8px;
+  font-size: clamp(0.9rem, 2vw, 1rem); /* Scalable list font size */
 }
 
 a {
@@ -58,6 +74,19 @@ a:hover {
 }
 
 .support-tips:hover {
-  transform: scale(1); /* Slight zoom on hover */
+  transform: scale(1.02); /* Slight zoom on hover */
   backdrop-filter: blur(10px); /* Increase blur on hover */
+}
+
+/* Responsive adjustments for .support-tips */
+@media (max-width: 768px) {
+  .support-tips {
+    padding: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .support-tips {
+    padding: 10px;
+  }
 }
