@@ -10,13 +10,10 @@ const BookNowTemp = () => {
           <p>You can reach us via:</p>
           <ul>
             <li>
-              <strong>Phone:</strong> (555) 123-4567
+              <strong>Phone/Text:</strong> (561) 468-8995 (Preferred)
             </li>
             <li>
-              <strong>Email:</strong> contact@anaxus.tech
-            </li>
-            <li>
-              <strong>Text:</strong> (555) 123-4567 (Preferred)
+              <strong>Email:</strong> schedule@anaxus.tech
             </li>
           </ul>
           <p className="instructions">
