@@ -15,11 +15,11 @@ export default function Navbar({ user, onSignOut }) {
         </div>
         <div className="nav-divider"></div>
         <Link to="/">Home</Link>
-        <Link to="/book-now">Book Now</Link>
+        <Link to="/booknowtemp">Book Now</Link>
         <Link to="/support">Support</Link>
       </div>
 
-      <div className="nav-right">
+      {/* <div className="nav-right">
         {user ? (
           <button onClick={onSignOut}>Sign Out</button>
         ) : (
@@ -28,7 +28,7 @@ export default function Navbar({ user, onSignOut }) {
             <Link to="/account/signup">Sign Up</Link>
           </>
         )}
-      </div>
+      </div> */}
     </nav>
   );
 }

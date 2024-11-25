@@ -4,6 +4,7 @@ import { supabase } from './supabaseClient';
 import './App.css';
 import Home from './pages/Home';
 import BookNow from './pages/BookNow';
+import BookNowTemp from './pages/BookNowTemp'; // Import BookNowTemp
 import Support from './pages/Support';
 import Login from './pages/account/Login';
 import SignUp from './pages/account/SignUp';
@@ -83,6 +84,7 @@ function App() {
             </PrivateRoute>
           } 
         />
+        <Route path="/booknowtemp" element={<BookNowTemp />} /> {/* Add BookNowTemp route */}
         <Route path="/account/login" element={<Login />} />
         <Route path="/account/signup" element={<SignUp />} />
         <Route path="/account/resetpassword" element={<ResetPassword />} />

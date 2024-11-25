@@ -1,0 +1,93 @@
+.book-now-temp-container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    min-height: 100vh; /* Full viewport height */
+    background-color: var(--background-color); /* Use your existing background color */
+    padding: 20px; /* Add some padding */
+    color: var(--text-color); /* Match global text color */
+}
+
+/* Wrapper box containing all content */
+.page-content-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--card-background); /* Match your card background color */
+    border: 3px solid var(--border-color); /* Use a visible border */
+    border-radius: 20px; /* Rounded corners for the box */
+    padding: 30px; /* Padding inside the box */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    background-color: rgba(0, 0, 0, 0.3);
+    width: 90%; /* Make the box responsive */
+    max-width: 800px; /* Limit the max width */
+    text-align: center; /* Center-align text */
+}
+
+/* Contact box styles inside the page-content-box */
+.contact-box {
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+    max-width: 450px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px; /* Space between elements */
+}
+
+.contact-box h1 {
+    font-size: 1.8rem; /* Match heading font size */
+    color: var(--primary-text-color); /* Use your primary text color */
+    font-weight: 700;
+    margin-bottom: 10px; /* Add spacing below heading */
+}
+
+.contact-box ul {
+    list-style: none; /* Remove default bullet points */
+    padding: 0;
+    margin: 0; /* Reset padding and margin */
+}
+
+.contact-box li {
+    margin: 10px 0; /* Space between list items */
+    font-size: 1rem; /* Standard font size */
+    color: var(--secondary-text-color); /* Match your secondary text color */
+}
+
+.contact-box li strong {
+    color: var(--highlight-text-color); /* Use your highlight text color */
+}
+
+.instructions {
+    font-size: 0.9rem;
+    color: var(--muted-text-color); /* Match your muted text color */
+    font-style: italic;
+    margin-top: 15px; /* Add spacing above */
+    line-height: 1.5; /* Improve readability */
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .page-content-box {
+        padding: 20px; /* Adjust padding for smaller screens */
+        box-shadow: none; /* Simplify shadow for simplicity */
+    }
+
+    .contact-box {
+        padding: 15px; /* Adjust padding for smaller screens */
+    }
+
+    .contact-box h1 {
+        font-size: 1.6rem; /* Smaller heading for smaller screens */
+    }
+
+    .contact-box li {
+        font-size: 0.9rem; /* Adjust font size */
+    }
+
+    .instructions {
+        font-size: 0.8rem; /* Smaller font for instructions */
+    }
+}
