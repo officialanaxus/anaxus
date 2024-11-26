@@ -6,6 +6,7 @@
     background-color: var(--background-color); /* Use your existing background color */
     padding: 20px; /* Add some padding */
     color: var(--text-color); /* Match global text color */
+    overflow: hidden; /* Prevent scrolling when all content fits */
 }
 
 /* Wrapper box containing all content */
@@ -15,7 +16,7 @@
     justify-content: center;
     align-items: center;
     background-color: var(--card-background); /* Match your card background color */
-    border: 3px solid var(--border-color); /* Use a visible border */
+    border: 1px solid rgba(58, 141, 255, 0.5); /* Use a visible border */
     border-radius: 20px; /* Rounded corners for the box */
     padding: 30px; /* Padding inside the box */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
@@ -23,6 +24,8 @@
     width: 90%; /* Make the box responsive */
     max-width: 800px; /* Limit the max width */
     text-align: center; /* Center-align text */
+    max-height: 100%; /* Limit height to fit the viewport */
+    overflow: hidden; /* Prevent scrolling within the box */
 }
 
 /* Contact box styles inside the page-content-box */
@@ -35,6 +38,7 @@
     flex-direction: column;
     align-items: center;
     gap: 15px; /* Space between elements */
+    overflow: hidden; /* Prevent content overflow */
 }
 
 .contact-box h1 {
